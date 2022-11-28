@@ -1,0 +1,171 @@
+/* 
+mobile first media query
+should be rem
+@media (min-width: 400px) {
+
+}
+My inital non-media query styles should be mobile first
+
+Margins should be rem
+
+Minimum tap size of 44px * 44px
+
+Use min, max, clamp; css funcitons
+
+body text same size across all devices
+headings may need to be shrunk
+*/
+:root {
+    --font18: calc(18rem / 16);
+
+    --primary: ;
+    --secondary: ;
+    --accent: ;
+
+    --padding: ;
+
+    --min-tap-height: 44px;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bitter', serif;
+}
+p, a, span {
+  font-family: 'Hind', sans-serif;
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+  overflow-wrap: break-word;
+  font-size: var(--font18);
+}
+
+h1 {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+}
+h2 {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+}
+
+/* Try to only change media queries with css custom properties in the :root 
+
+for example a bigger screen size will require more border radius and --spacing
+*/
+a {
+  text-decoration: none;
+  color: grey;
+}
+header {
+  border-top: 5px solid hsl(0, 91%, 74%);
+}
+.logoCtr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(12rem / 16) 0;
+}
+.logoCtr__a {
+  font-size: 1.7rem;
+}
+
+nav {
+  background-color: hsl(0, 0%, 93%);
+  padding: 0.5rem 0;
+}
+.nav__ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: .8rem;
+  padding-left: 0;
+}
+.nav__li a {
+  padding: 0.5em 1em;
+  color: hsl(180deg, 100%, 32%);
+}
+
+main {
+
+}
+.main__top {
+  margin: calc(50rem / 16) 0;
+  
+}
+.main__h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 0 6vw;
+}
+.main__date {
+  display: block;
+  margin-top: calc(20 / 16 * 1rem);
+  text-align: center;
+  color: hsl(0, 0%, 60%);
+  font-size: .9rem;
+}
+.list {
+  padding: 0;
+  border-top: 1px solid hsl(0, 0%, 70%);
+}
+.card {
+  display: grid;
+  height: 120px;
+  /* grid-template-rows: 25px 1fr 25px; */
+  grid-template-columns: 15% 45% 40%;
+  padding: 10px;
+  border-bottom: 1px solid hsl(0, 0%, 70%);
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.card__left {
+  justify-self: center;
+
+}
+.card__img {
+  height: 100px;
+  margin: 0 auto;
+}
+@media (min-width: calc(550 / 16 * 1rem)) {
+/* Tablets */
+}
+
+@media (min-width: calc(1100 / 16 * 1rem)) {
+/* Laptop */
+}
+
+@media (min-width: calc(1500 / 16 * 1rem)) {
+/* Desktop */
+}
+@media (pointer: coarse) {
+    /* touch screen */
+    button, input {
+        min-height: var(--min-tap-height);
+    }
+}
+@media (hover: hover) and (pointer: fine) {
+/* Hover effects for mouse */  
+}
