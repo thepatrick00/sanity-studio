@@ -143,7 +143,14 @@ main {
 }
 .card__left {
   justify-self: center;
-
+  font-size: 1.2rem;
+}
+.card__middle {
+  padding-left: 10px;
+}
+.card__middle span {
+  color: hsl(120deg 50% 40%);
+  font-weight: bold;
 }
 .card__img {
   height: 100px;

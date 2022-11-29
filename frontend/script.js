@@ -1,15 +1,4 @@
 
-for(let i=1; i <= 2; i++) {
-    
-
-    // fetch(`http://localhost:1337/api/product-cards/${i}?populate=*`)
-    // .then((response) => response.json())
-    // .then((res) => {
-    //     console.log(res)
-    //     createCard(res)
-    // });
-
-}
 let PROJECT_ID = "e47h2o9m";
 let DATASET = "production";
 // _type is the value of the inital name value of card.js
@@ -33,11 +22,10 @@ fetch(PROJECT_URL)
     })
     .catch((err) => console.error(err));
     
-const listEl = document.querySelector('.list');
+const orderedListEl = document.querySelector('.list');
     
 function createCard(res, index) {
     const li = document.createElement('li')
-    li.classList.add('card')
     const span = document.createElement('span')
     span.classList.add('card__left')
     const div = document.createElement('div')
@@ -65,9 +53,14 @@ function createCard(res, index) {
     img.src = image_url;
     img.alt = atr.brand_name + ' ' + atr.product_name;
     
-    li.appendChild(span)
-    li.appendChild(div)
-    li.appendChild(img)
+    const a = document.createElement('a');
+    a.classList.add('card')
+    a.href = atr.affiliate_link;
+
+    li.appendChild(a);
+    a.appendChild(span)
+    a.appendChild(div)
+    a.appendChild(img)
     // console.log(li, span, div, img)
-    listEl.appendChild(li);
+    orderedListEl.appendChild(li);
 }
