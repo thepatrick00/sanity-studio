@@ -8,7 +8,7 @@ let IMAGE_QUERY = encodeURIComponent(`*[_type == "card"]{
     "imageUrl": image.asset->url
 }`);
 // Compose the URL for your project's endpoint and add the query
-let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+// let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
 
 fetch(PROJECT_URL)

@@ -1,5 +1,3 @@
-import card from './card'
-
 export default {
     name: 'list',
     type: 'document',

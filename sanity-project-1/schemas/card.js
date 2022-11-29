@@ -11,11 +11,7 @@ export default {
         // the type of data
         type: 'string'
       },
-      {
-        name: 'brand_name',
-        title: 'Brand Name',
-        type: 'string',
-      },
+      {name: 'brand_name', title: 'Brand Name', type: 'string'},
       {
         name: 'list_name',
         title: 'List Name',
