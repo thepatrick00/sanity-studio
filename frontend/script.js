@@ -26,16 +26,16 @@ fetch(PROJECT_URL)
     .then((res) => res.json())
     // destructure result object b/c others don't matter
     .then(({ result }) => {
-        result.forEach(data_set => {
+        result.forEach((data_set, index) => {
             console.log(data_set)
-            createCard(data_set)
+            createCard(data_set, index)
         })
     })
     .catch((err) => console.error(err));
     
 const listEl = document.querySelector('.list');
     
-function createCard(res) {
+function createCard(res, index) {
     const li = document.createElement('li')
     li.classList.add('card')
     const span = document.createElement('span')
@@ -44,7 +44,7 @@ function createCard(res) {
     div.classList.add('card__middle')
     const img = document.createElement('img')
     img.classList.add('card__img')
-    span.textContent = 1;
+    span.textContent = index + 1;
     
     const atr = res;
     
