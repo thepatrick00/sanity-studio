@@ -1,6 +1,6 @@
 export default {
     name: 'card',
-    type: 'document',
+    type: 'object',
     title: 'Product Card',
     fields: [
       {

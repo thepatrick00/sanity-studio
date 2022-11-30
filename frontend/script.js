@@ -2,25 +2,26 @@
 let PROJECT_ID = "e47h2o9m";
 let DATASET = "production";
 // _type is the value of the inital name value of card.js
-let QUERY = encodeURIComponent('*[_type == "card"]');
+let QUERY = encodeURIComponent('*[_type == "lists"]');
 // Compose the URL for your project's endpoint and add the query
-let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+// let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
 
 fetch(PROJECT_URL)
     .then((res) => res.json())
     // destructure result object b/c others don't matter
     .then(({ result }) => {
-        result.forEach((data_set, index) => {
-            console.log(data_set)
-            createCard(data_set, index)
+        const list = result[0];
+        list.cards.forEach((card, index) => {
+            createCard(card, index)
         })
     })
     .catch((err) => console.error(err));
     
-const orderedListEl = document.querySelector('.list');
     
-function createCard(res, index) {
+function createCard(atr, index) {
+    const orderedListEl = document.querySelector('.list');
+
     const li = document.createElement('li')
     const span = document.createElement('span')
     span.classList.add('card__left')
@@ -30,8 +31,7 @@ function createCard(res, index) {
     img.classList.add('card__img')
     span.textContent = index + 1;
     
-    const atr = res;
-    
+
     const mid__p = document.createElement('p');
     mid__p.textContent = atr.brand_name;
     div.appendChild(mid__p)
@@ -57,6 +57,6 @@ function createCard(res, index) {
     a.appendChild(span)
     a.appendChild(div)
     a.appendChild(img)
-    // console.log(li, span, div, img)
+
     orderedListEl.appendChild(li);
 }

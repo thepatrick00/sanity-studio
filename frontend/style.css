@@ -92,19 +92,40 @@ header {
 }
 
 nav {
-  background-color: hsl(0, 0%, 93%);
-  padding: 0.5rem 0;
-}
-.nav__ul {
+  border-top: 1px solid hsl(0, 0%, 86%);
   display: flex;
-  list-style: none;
-  justify-content: center;
-  gap: .8rem;
-  padding-left: 0;
+  /* make sure the list categories words not wrap onto another line */
+  white-space: nowrap;
+  gap: 15px;
+  padding: 1rem 10px;
+  overflow-x: scroll;
+  position: relative;
 }
-.nav__li a {
-  padding: 0.5em 1em;
-  color: hsl(180deg, 100%, 32%);
+.nav__categories {
+  padding: .3rem 1rem;
+  border: 1px solid rgb(107, 107, 107);
+  border-radius: 50px;
+}
+.nav__scroll {
+  border-radius: 50px;
+  border: 1px solid black;
+  background-color: hsl(0, 60%, 60%);
+  color: white;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+.nva__scroll svg {
+  margin: 0;
+}
+.nav__scroll--prev {
+  position: absolute;
+}
+.nav__scroll--next {
+  position: absolute;
+  right: 10px;
 }
 
 main {

@@ -24,4 +24,6 @@ Before I start I have a list of ideas to improve the current state of the site.
 4. Improve card aesthetics. 
     * Add wishlist functionality to left side of cards.
     * Make it more obvious you can click and buy (maybe a button on the price and underline on the product title)
-5. 
+
+(1) is completed. Made the backend more user friendly, by removing unnecssary inputs, formatting it better, and adding default values.
+(2) started #2
