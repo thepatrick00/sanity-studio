@@ -4,19 +4,39 @@ let DATASET = "production";
 // _type is the value of the inital name value of card.js
 let QUERY = encodeURIComponent('*[_type == "lists"]');
 // Compose the URL for your project's endpoint and add the query
-// let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
 
 fetch(PROJECT_URL)
     .then((res) => res.json())
     // destructure result object b/c others don't matter
     .then(({ result }) => {
-        const list = result[0];
-        list.cards.forEach((card, index) => {
+        console.log(result)
+        
+        result[1].cards.forEach((card, index) => {
             createCard(card, index)
         })
+
+        //[0] right now but I will want to .forEach this for each list
+        result.forEach(list => {
+            createScrollCtr__item(list);
+        })
+
     })
     .catch((err) => console.error(err));
+
+function createScrollCtr__item(obj) {
+    const scrollCtr = document.querySelector('.scrollCtr');
+    const div = document.createElement('div');
+    div.classList.add('scrollCtr__item');
+    const a = document.createElement('a');
+    // Think about how I will link each item to their appropriate list
+    // a.href = obj.
+    a.textContent = obj.list_name;
+    
+    div.appendChild(a);
+    scrollCtr.appendChild(div);
+}
     
     
 function createCard(atr, index) {
@@ -60,3 +80,46 @@ function createCard(atr, index) {
 
     orderedListEl.appendChild(li);
 }
+
+// Scroll Bar & it's scroll buttons & functionality
+const prev = document.querySelector('.scrollBtn__prev')
+const next = document.querySelector('.scrollBtn__next')
+const nav = document.querySelector('nav.scrollCtr')
+const scrollCtr__items = document.querySelectorAll('.scrollCtr__item')
+
+
+// Intersection Observer API
+let callback = (entries, observer) => {  
+    if (!entries[0].isIntersecting) {
+        prev.classList.remove('hide1')
+        prev.classList.add('show')
+    } else {
+        prev.classList.add('hide1')
+        prev.classList.remove('show')
+    } 
+}
+let options = {
+    root: nav,
+    rootMargin: '0px',
+    threshold: .5
+}
+let observer = new IntersectionObserver(callback, options);
+observer.observe(scrollCtr__items[0])
+
+
+let observer2 = new IntersectionObserver((entries) => {
+    // if the last item is visible, hide next btn
+    if(entries[0].isIntersecting) {
+        next.classList.add('hide2');
+        next.classList.remove('show');
+    } else {
+        next.classList.remove('hide2');
+        next.classList.add('show');
+    }
+}, 
+{
+    root: nav,
+    rootMargin: '0px',
+    threshold: 0
+})
+observer2.observe(scrollCtr__items[scrollCtr__items.length - 1]);

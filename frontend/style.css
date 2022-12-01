@@ -58,7 +58,7 @@ p, a, span {
   font-family: 'Hind', sans-serif;
 }
 
-p, h1, h2, h3, h4, h5, h6, a {
+p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   font-size: var(--font18);
 }
@@ -76,7 +76,6 @@ for example a bigger screen size will require more border radius and --spacing
 */
 a {
   text-decoration: none;
-  color: grey;
 }
 header {
   border-top: 5px solid hsl(0, 91%, 74%);
@@ -87,45 +86,85 @@ header {
   align-items: center;
   padding: calc(12rem / 16) 0;
 }
+.logo {
+  width: 50%;
+}
 .logoCtr__a {
   font-size: 1.7rem;
 }
-
-nav {
+/* the nav rule below has overflow-x: scroll creating a scroll context
+to put absolute buttons that don't move I need them outside of a scroll context */
+.noScrollContext {
+  position: relative;
+}
+nav.scrollCtr {
   border-top: 1px solid hsl(0, 0%, 86%);
+  border-bottom: 1px solid hsl(0, 0%, 86%);
   display: flex;
   /* make sure the list categories words not wrap onto another line */
   white-space: nowrap;
   gap: 15px;
   padding: 1rem 10px;
   overflow-x: scroll;
+}
+.scrollCtr__item {
+  padding: 0 1rem;
+  border: 1px solid rgb(107, 107, 107);
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px;
+  transition: transform 250ms;
   position: relative;
 }
-.nav__categories {
-  padding: .3rem 1rem;
-  border: 1px solid rgb(107, 107, 107);
-  border-radius: 50px;
+.scrollCtr__item--active {
+  background-color: hsl(0, 0%, 10%);
 }
-.nav__scroll {
-  border-radius: 50px;
-  border: 1px solid black;
-  background-color: hsl(0, 60%, 60%);
+.scrollCtr__item--active a {
   color: white;
-  width: 44px;
-  height: 44px;
+}
+.scrollCtr__item::after {
+  --tap-increment: -8px;
+  content: '';
+  position: absolute;
+  top: var(--tap-increment);
+  right: var(--tap-increment);
+  left: var(--tap-increment);
+  bottom: var(--tap-increment);
+}
+.scrollCtr__item:hover {
+  transform: translateY(-4px);
+}
+.scrollBtn {
+  border-radius: 50px;
+  border: none;
+  background-color: hsla(0 0% 13% / .5);
+  width: 38px;
+  height: 38px;
   display: grid;
   place-content: center;
   cursor: pointer;
-}
-.nva__scroll svg {
-  margin: 0;
-}
-.nav__scroll--prev {
+  transition: transform 250ms, opacity 500ms;
   position: absolute;
+  top: 1rem;
+  z-index: 1;
 }
-.nav__scroll--next {
-  position: absolute;
-  right: 10px;
+.scrollBtn__prev {
+  left: 12px;
+}
+.scrollBtn__next {
+  right: 12px;
+}
+.hide1 {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.hide2 {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.show {
+  opacity: 1;
+  transform: translateY(0px);
 }
 
 main {

@@ -30,5 +30,11 @@ export default {
         title: 'Image',
         type: 'image',
       },
+      {
+        name:'amazon_image_url',
+        title:'Image HTML',
+        type:'string',
+        description: 'This is useful for quickly inserting an image from Amazon SiteStripe. You need to either fill out the image field above or this field.'
+      }
     ]
   }

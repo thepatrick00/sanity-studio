@@ -27,3 +27,20 @@ Before I start I have a list of ideas to improve the current state of the site.
 
 (1) is completed. Made the backend more user friendly, by removing unnecssary inputs, formatting it better, and adding default values.
 (2) started #2
+
+# Day 4: 11-30-22
+* Now I want the active list item to have active styles for the scroll bar.
+
+Working on #2 on the list.
+
+I made a side scroll bar with overflow on the x axis. I wanted previous and next button so people can either click or swipe to look at all the list categories. 
+
+I wanted the previous button to only appear after you have scrolled right some space because clicking left button when you are a x axis 0, makes no sense.
+
+I came up with a solution that scroll event listener and looks element.scrollLeft preoperty that tells us how far we are from the left edge.
+
+I didn't like that the scroll event listener fired so much, so I looked for a more preformant solution and found out about the Intersection Observer API.
+
+This solution would fire a callback function only when the element I observed was at least 50% on the screen. This was made easily possible with the Intersection Observer API.
+
+I also gave animation for the previous scroll button, to make it feel more natural.
