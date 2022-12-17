@@ -44,3 +44,30 @@ I didn't like that the scroll event listener fired so much, so I looked for a mo
 This solution would fire a callback function only when the element I observed was at least 50% on the screen. This was made easily possible with the Intersection Observer API.
 
 I also gave animation for the previous scroll button, to make it feel more natural.
+
+Finally I updated the schema & code so you can add images normally OR you can add HTML from Amazon Affiliate, which is also an image.
+
+1. I did a lot today. Might want to do a simpler break down list.
+2. PROBLEM I WANT TO LEARN TO FIX: The elements I added with document.createElement are not being found by my querySelector
+
+# Day 5: 12-2-22
+Lesson: When you create elements with Document.createElement() and then try to select elements with Document.querySelectorAll(), code order matters to make sure every elment is selected.
+
+This lesson helped me fixed the absolute scroll buttons that appear above the scroll-nav. They appear and disapear when it makes sense, for example if I'm at the begining of the list it does not make sense to show the "go left" button since we are already left most.
+
+Working on (4) card aesthetics.
+Lesson: If a block element is not full width like the other element, it may be because there is not enough text to strech it to full width.
+
+1. Make middle and right box clickable not left box.
+2. Add bookmark functionality with localstorage and a bookmark page
+3. Add list logic to change from one list to another.
+
+# Day 6: 12-16-22
+Since I have already pushed to github. I will create a new repo for CS50, that hides the api key, and private my current repo. I wanted to use os.environ like we did in python however, I found a simpler solution in this case using Netlify as a backend to have my api key secure and hidden.
+[tutotrial I followed](https://medium.com/@oreillyalan88/how-to-hide-api-keys-from-github-7a14d1bf80c)
+
+I spent all day refactoring for redability and figuring out how to do routing in vanilla js. I opted for a very interesting option, as it was the easiest and it had a unique upside of only making 1 initial api call. 
+
+This was routing using html and css only with the power of :target psuedo-class. This allowed me to display: block; content to show it based on if a href="#" with a hash inside was pressed. :target refered to the element with the id that matched the hash link.
+
+I also solved the challenge of giving my anchor buttons active styles by creating a function that uses event delegation to change only have 1 button with an active style.

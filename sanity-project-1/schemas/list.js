@@ -10,10 +10,10 @@ export default {
     title: 'Lists',
     fields: [
         {
-            title: 'List Name',
+            title: 'List Name/Headline',
             name: 'list_name',
             type: 'string',
-            description: 'ex. Christmas, Gift Under $15, Fluffiest Gifts'
+            description: 'Make this catchy so people care about the list. Ex. Top 10 Gift For Christmas Under $25'
         },
         {
             title: 'Last Updated Date',
@@ -27,6 +27,7 @@ export default {
             type: 'array',
             of: [{type: 'card'}]
         },
+        
     ],
     initialValue: () => ({
         last_updated_date: formattedDate
