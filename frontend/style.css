@@ -1,9 +1,7 @@
 /* 
 mobile first media query
 should be rem
-@media (min-width: 400px) {
 
-}
 My inital non-media query styles should be mobile first
 
 Margins should be rem
@@ -15,16 +13,52 @@ Use min, max, clamp; css funcitons
 body text same size across all devices
 headings may need to be shrunk
 */
+@import "card.css";
+
 :root {
-    --font18: calc(18rem / 16);
+  --gray-50: hsl(210deg, 25%, 96%);
+  --gray-100: hsl(210deg, 25%, 88%);
+  --gray-300: hsl(210deg, 14%, 66%);
+  --gray-400: hsl(210deg, 12%, 55%);
+  --gray-200: hsl(210deg, 20%, 77%);
+  --gray-500: hsl(210deg, 8%, 50%);
+  --gray-600: hsl(210deg, 9%, 45%);
+  --gray-700: hsl(210deg, 10%, 40%);
+  --gray-800: hsl(210deg, 15%, 25%);
+  --gray-900: hsl(210deg, 15%, 20%);
+  --gray-1000: hsl(210deg, 19%, 10%);
+  
+  --primary-50: #fef2f2;
+  --primary-100: #fee2e2;
+  --primary-200: #fecaca;
+  --primary-300: #fca5a5;
+  --primary-400: #f87171;
+  --primary-500: #ef4444;
+  --primary-600: #dc2626;
+  --primary-700: #b91c1c;
+  --primary-800: #991b1b;
+  --primary-900: #7f1d1d;
 
-    --primary: ;
-    --secondary: ;
-    --accent: ;
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #d9f99d;
+  --secondary-300: #bef264;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #064e3b;
 
-    --padding: ;
+  --primary1: #DE976B;
+  --primary2: #FFCEA0;
+  --primary3: #FFF8E6;
 
-    --min-tap-height: 44px;
+  --font18: calc(18rem / 16);
+
+  --padding: ;
+
+  --min-tap-height: 44px;
 }
 *, *::before, *::after {
   box-sizing: border-box;
@@ -78,7 +112,7 @@ a {
   text-decoration: none;
 }
 .wrapper__header {
-  border-top: 5px solid hsl(0, 91%, 74%);
+  border-top: 5px solid var(--primary-400);
 }
 .logoCtr {
   display: flex;
@@ -90,16 +124,22 @@ a {
   width: 50%;
 }
 .logoCtr__a {
-  font-size: 1.7rem;
+  font-size: 2rem;
+  font-family: 'Carter One';
+  color: var(--primary-400);
+  letter-spacing: 2px;
 }
-/* the nav rule below has overflow-x: scroll creating a scroll context
+/* the nav.ScrollCtr rule below has overflow-x: scroll creating a scroll context
 to put absolute buttons that don't move I need them outside of a scroll context */
 .noScrollContext {
-  position: relative;
+  /* any position value, other than static, will be the containing block for the absolute positioned buttons */
+  position: sticky;
+  z-index: 1;
+  top: 0px;
 }
 nav.scrollCtr {
   border-top: 1px solid hsl(0, 0%, 86%);
-  border-bottom: 1px solid hsl(0, 0%, 86%);
+  background-color: white;
   display: flex;
   /* make sure the list categories words not wrap onto another line */
   white-space: nowrap;
@@ -109,12 +149,13 @@ nav.scrollCtr {
 }
 .scrollAnchor {
   padding: 0 1rem;
-  border: 1px solid rgb(107, 107, 107);
   height: 40px;
   line-height: 40px;
   border-radius: 50px;
   transition: transform 250ms;
   position: relative;
+  color: hsl(0, 0%, 10%);
+  background-color: var(--gray-100);
 }
 .scrollAnchor::after {
   --tap-increment: -8px;
@@ -130,10 +171,14 @@ nav.scrollCtr {
 .scrollAnchor:hover {
   transform: translateY(-4px);
 }
+.active {
+  background-color: var(--primary-400);
+  color: white;
+}
 .scrollBtn {
   border-radius: 50px;
   border: none;
-  background-color: hsla(0 0% 13% / .5);
+  background-color: hsla(0 100% 10% / .9);
   width: 38px;
   height: 38px;
   display: grid;
@@ -162,16 +207,20 @@ nav.scrollCtr {
   opacity: 1;
   transform: translateY(0px);
 }
-.article__top {
-  margin: calc(50rem / 16) 0;
-  
+.article {
+  scroll-margin-top: 73px;
 }
-.main__h1 {
+.article__top {
+  padding: calc(50rem / 16) 0;
+  /* css background i copied from josh comaeu */
+
+}
+.article__h1 {
   font-size: 1.8rem;
   text-align: center;
   padding: 0 6vw;
 }
-.main__date {
+.article__date {
   display: block;
   margin-top: calc(20 / 16 * 1rem);
   text-align: center;
@@ -182,63 +231,7 @@ nav.scrollCtr {
   padding: 0;
   border-top: 1px solid hsl(0, 0%, 70%);
 }
-.card {
-  display: grid;
-  grid-template-columns: 15% 45% 40%;
-  padding: 10px;
-  border-bottom: 1px solid hsl(0, 0%, 70%);
-  gap: 5px;
-  /* Due to the min-height the content childs can actually be effected. For best alignment I want them to be at the top together */
-  /* min-height: 150px; */
-  align-content: start;
-  justify-items: center;
-  position: relative;
-  color: rgb(49, 49, 49);
-}
-.card__left {
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-}
-.card__count {
-  font-size: 1.2rem;
-  color: hsl(0, 0%,45%);
-  /* position: absolute; */
-  /* border: 1px solid hsl(0, 0%, 70%); */
-  /* border-bottom-right-radius: 80px; */
-  /* margin-left: -.5rem;
-  padding: .2rem 1rem; */
-  margin: auto;
-  border-top: none;
-  top: 0px;
-  left: 0px;
-}
-.card__bookmark {
-  /* Max-width: 100%; not working on svg so 100px is an arbitrary value that represent 100% */
-  width: 100px;
-}
-.card__middle {
-  padding-left: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 100%;
-}
-.card__middle span {
-  white-space: nowrap;
-  color: hsl(120deg 50% 40%);
-  font-weight: bold;
-  
-}
-.card__middle p {
 
-}
-.card__middle .line {
-  border-top: 1px dotted hsl(0, 0%, 72%);
-}
-.card__img {
-  height: 110px;
-}
 @media (min-width: calc(550 / 16 * 1rem)) {
 /* Tablets */
 }
@@ -259,6 +252,8 @@ nav.scrollCtr {
 @media (hover: hover) and (pointer: fine) {
 /* Hover effects for mouse */  
 }
+
+/* Routing Magic with html/css only */
 .article {
   display: none;
 }
@@ -267,8 +262,4 @@ nav.scrollCtr {
 }
 .article:target {
   display: block;
-}
-.active {
-  background-color: cornflowerblue;
-  color: white;
 }

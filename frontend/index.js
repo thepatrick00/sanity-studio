@@ -1,4 +1,4 @@
-import {q, create} from './helper.js'
+import {q, create, noop} from './helper.js'
 import {createCard} from './card.js'
 
 export let PROJECT_ID = "e47h2o9m";
@@ -34,14 +34,18 @@ function createArticle(list, index) {
         article.classList.add('article--first')
         // Then if any anchor is clicked it will check first article element and remove article--first
     }
+    
+    const updatedTime = list._updatedAt
+    let t = updatedTime.slice(0,10).split('-')
+    t = `${t[1]}-${t[2]}-${t[0]}`
 
     header.innerHTML = `
-        <h1 class="main__h1">${list.list_name}</h1>
-        <span class="main__date">Last updated ${list.last_updated_date}</span>
+        <h1 class="article__h1">${list.list_name}</h1>
+        <span class="article__date">Last updated ${t}</span>
     `;
-
-    list.cards.forEach((card, index) => {
-        ol.appendChild(createCard(card, index))
+    
+    list.cards.forEach((card, index, list) => {
+        ol.appendChild(createCard(card, index, list))
     })
 
     article.appendChild(header)
@@ -121,10 +125,15 @@ function scrollAnchorActiveStyle() {
         
         anchors.forEach(anchor => {
             // Removes homepage article, after first :target click
-            if (q('.article')[0].classList.contains('article--first'))
-            {
-                q('.article')[0].classList.remove('article--first')
+            function removeFirstArticle() {
+                if (q('.article')[0].classList.contains('article--first'))
+                {
+                    q('.article')[0].classList.remove('article--first')
+                }
+                // points to no operation function after done running, so it only runs once.
+                removeFirstArticle = noop
             }
+            removeFirstArticle()
             // This is for styles
             anchor.classList.remove('active');
         })

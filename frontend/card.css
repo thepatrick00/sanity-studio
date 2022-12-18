@@ -1,0 +1,61 @@
+/* at 428px I think the middle card to much to the left or the text should grow */
+/* I want an arrow at the end of the price "button" */
+.card {
+    display: grid;
+    grid-template-columns: 15% 45% 40%;
+    padding: 10px;
+    border-bottom: 1px solid hsl(0, 0%, 70%);
+    gap: 5px;
+    /* Due to the min-height the content childs can actually be effected. For best alignment I want them to be at the top together */
+    /* min-height: 150px; */
+    align-content: start;
+    justify-items: center;
+    position: relative;
+    color: rgb(49, 49, 49);
+}
+.card__left {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+}
+.card__count {
+    font-size: 1.2rem;
+    color: hsl(0, 0%,45%);
+    margin: auto;
+    border-top: none;
+    top: 0px;
+    left: 0px;
+    letter-spacing: 2px;
+}
+.card__bookmark {
+    /* Max-width: 100%; not working on svg so 100px is an arbitrary value that represent 100% */
+    width: 70px;
+}
+.card__middle {
+    padding-left: 10px;
+    min-width: 100%;
+}
+.card__middle--line {
+    border-top: 3px dotted hsl(0, 0%, 72%);
+    margin: 20px 0;
+}
+.card__middle--price {
+    white-space: nowrap;
+    color: hsl(120deg 50% 40%);
+    font-weight: bold;
+}
+.card__img {
+    height: 110px;
+}
+
+@media (min-width: calc(550 / 16 * 1rem)) {
+/* Tablets */
+}
+
+@media (min-width: calc(1100 / 16 * 1rem)) {
+/* Laptop */
+}
+
+@media (min-width: calc(1500 / 16 * 1rem)) {
+/* Desktop */
+}

@@ -1,0 +1,20 @@
+1. My brand
+A curated list site. Trendy products you have never seen before. A spark of fun to keep you interested and something for everyone.
+
+2. Logo Usage Rules
+
+3. Color Palette✅
+I am using shades of grey and shades of red to create contrast between colors and have an easy to understand theme.
+
+4. Typography (TODO)
+- Include font-families and font-size for h1-h6
+- Body fonts
+- Button fonts
+
+5. Layout and spacing rules (TODO)
+
+6. Consider Icon styles
+
+7. Guidline for illustration and imagery
+
+8. Develop your brands voice

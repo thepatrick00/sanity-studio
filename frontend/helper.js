@@ -23,3 +23,6 @@ export function create(element, className) {
 function slugify(listName) {
     return listName.toLowerCase().replace(/\s+/g, '-').slice(0,200)
 }
+
+// noop no operation function. Run a function once then point to this function when you no longer need to run the function again.
+export function noop() {}

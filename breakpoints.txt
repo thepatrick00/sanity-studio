@@ -1,0 +1,11 @@
+@media (min-width: calc(550 / 16 * 1rem)) {
+/* Tablets */
+}
+
+@media (min-width: calc(1100 / 16 * 1rem)) {
+/* Laptop */
+}
+
+@media (min-width: calc(1500 / 16 * 1rem)) {
+/* Desktop */
+}
