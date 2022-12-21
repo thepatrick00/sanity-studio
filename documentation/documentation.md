@@ -117,8 +117,13 @@ Localstorage bug fixed.
 
 Tommorow
 1. Add ellipsis to very long categorie names
-2. Add list description in api, and add it dynamically with js
-3. Make more lists, that will be used in real life.
-4. Add silbling as members on Sanity.io and Amazon and let them make a list or more
+2. Add list description in api, and add it dynamically with js ✅
+3. Make more lists, that will be used in real life. ✅
+4. Add silbling as members on Sanity.io and Amazon and let them make a list or more ✅
 5. Write CS50 essay/summary about this project
 6. Record 3min(max) video about this project. Make simple cuts so I can get all the information in, in 3 minutes.
+
+
+# Day 11: 12-21-22
+- look if I can change list order in api
+- capatilize all list anchor chips with js (did with css text-transform: capitalize;) ✅

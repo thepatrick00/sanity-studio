@@ -5,7 +5,7 @@ export let PROJECT_ID = "e47h2o9m";
 export let DATASET = "production";
 // _type is the value of the inital name value of (card.js) schema document
 let QUERY = encodeURIComponent('*[_type == "lists"]');
-let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+let PROJECT_URL = `https://${PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
 // localStorage.clear()
 
