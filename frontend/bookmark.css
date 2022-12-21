@@ -1,0 +1,97 @@
+.bookmark__wrapper {
+    max-width: 700px;
+    margin: auto;
+}
+.bookmark__list {
+    /* Space to avoid cut off with position: fixed; info element at bottom */
+    padding-bottom: calc(113 / 16 * 1rem);
+}
+.bookmark__card {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(1fr, 3);
+    gap: 1rem;
+    grid-template-areas: 
+        "image brand"
+        "image product"
+        "image price"
+    ;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-100);
+    position: relative;
+}
+.bookmark__card:nth-of-type(odd) {
+    background-color: var(--gray-50);
+}
+.bookmark__card--image {
+    grid-area: image;
+    justify-self: center;
+}
+.bookmark__card--brand {
+    grid-area: brand;
+    align-self: end;
+}
+.bookmark__card--product {
+    grid-area: product;
+}
+.bookmark__card--price {
+    grid-area: price;
+    width: 90%;
+    max-width: calc(180 / 16 * 1rem);
+}
+.bookmark__card--price, .info__price {
+    background-color: var(--primary3);
+    border: 1px solid grey;
+    height: min-content;
+    border-radius: 10px;
+    text-align: center;
+    padding: revert;
+    padding: .25rem 0;
+}
+.bookmark__card--info {
+    position: fixed;
+    bottom: 0px;
+    /* background: var(--primary-50); */
+    background-color: white;
+    border: 2px solid var(--gray-300);
+    width: 100%;
+    max-width: 700px;
+    letter-spacing: 1px;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+    align-items: center;
+}
+.info__price {
+    width: revert;
+    width: 80%
+}
+.info__price > .detail {
+    color: rgb(51, 153, 51);
+    font-weight: bold;
+}
+.totalItems {
+    margin-left: 1rem;
+}
+.deleteButton {
+    background-color: var(--primary-50);
+    aspect-ratio: 1;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Hind';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: var(--primary-500);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.deleteButton:hover,
+.deleteButton:focus {
+    background-color: var(--primary-100);
+    color: var(--primary-600)
+}

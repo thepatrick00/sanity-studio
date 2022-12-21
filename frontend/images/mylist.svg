@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <g id="svg-practice.svg" serif:id="svg practice.svg" transform="matrix(2.22768,0,0,2.22768,286.675,271.088)">
+        <g transform="matrix(1,0,0,1,-100,-100)">
+            <g transform="matrix(7.01213,0,0,7.01213,-0.20576,-0.70766)">
+                <g id="bookmark.svg">
+                    <path d="M19,21L12,16L5,21L5,5C5,3.903 5.903,3 7,3L17,3C18.097,3 19,3.903 19,5L19,21Z" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1.26px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(0.954806,0,0,0.954806,17.7033,-49.513)">
+        <circle cx="249.576" cy="293.902" r="223.88" style="fill:none;stroke:black;stroke-width:7.91px;stroke-miterlimit:1.5;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-25.6964,5.46048)">
+        <g transform="matrix(0.896749,0.44254,-0.44254,0.896749,214.499,-7.50039)">
+            <text x="123.323px" y="455.926px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">M</text>
+        </g>
+        <g transform="matrix(0.976215,0.216805,-0.216805,0.976215,110.106,-30.2779)">
+            <text x="193.047px" y="486.676px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">y</text>
+        </g>
+        <g transform="matrix(0.995749,-0.0921128,0.0921128,0.995749,-44.717,27.7854)">
+            <text x="278.646px" y="498.32px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">L</text>
+        </g>
+        <g transform="matrix(0.971243,-0.23809,0.23809,0.971243,-107.523,93.2082)">
+            <text x="332.092px" y="491.716px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">i</text>
+        </g>
+        <g transform="matrix(0.923635,-0.383273,0.383273,0.923635,-157.222,176.882)">
+            <text x="365.271px" y="482.987px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">s</text>
+        </g>
+        <g transform="matrix(0.841294,-0.540578,0.540578,0.841294,-185.047,295.064)">
+            <text x="409.994px" y="462.682px" style="font-family:'Montserrat-Bold', 'Montserrat';font-weight:700;font-size:64px;">t</text>
+        </g>
+    </g>
+</svg>

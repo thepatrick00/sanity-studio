@@ -1,7 +1,9 @@
 export function q(query) {
     const selected = document.querySelectorAll(query)
     if (selected.length === 0) {
-        throw 'You did not select anything'
+        throw `You did not select anything. From helper.js, function q.
+            query:${query}, selected:${selected}
+        `
     } else if (selected.length === 1) {
         return selected[0]
     } else {

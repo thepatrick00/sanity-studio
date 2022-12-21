@@ -9,7 +9,14 @@ export default {
             title: 'List Name/Headline',
             name: 'list_name',
             type: 'string',
-            description: 'Make this catchy so people care about the list. Ex. Top 10 Gift For Christmas Under $25'
+            description: 'Headlines should be catchy, descriptive, and not to long (55 characters)'
+        },
+        {
+            title: 'List Summary',
+            name: 'list_summary',
+            type: 'text',
+            rows: 4,
+            description: 'Describe the list. Why should people care. Who is this list for. Why would you want the items.'
         },
         {    
             title: 'Product Cards',

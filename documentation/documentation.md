@@ -79,12 +79,46 @@ The solution was made in the function that used event delegation. If any of the 
 # Day 7: 12-17-22
 - I will focus on responsive design and aesthetic today
 
-Again i'm thinking about architecture. I have many functions for different components and the question is do I pass individual parts or the whole object.
+- Again i'm thinking about architecture. I have many functions for different components and the question is do I pass individual parts or the whole object.
 I was doing individual parts but once you get passed passing 2 parameters it starts gettting confusing and passing an object with the relevent things may be the smarter choice.
 
 ### At the end of the project I may want to consider trying out a bundler since I have many seperate code files to possibly speed up this site.
-1. scroll buttons need functionality. On click they need to move to the next set of lists. Snap scrolling
-2. Bookmark functionality
+1. scroll buttons need functionality. On click they need to move to the next set of lists.✅ 
+2. Bookmark functionality ✅
 3. Responsive design
+4. scroll ctr background blur instead of white ✅
+5. scrollAnchors don't need hover effect ✅
+5. scrollAnchors need to be more button like (they look fine now)
+6. 1/4 number is not aligned with bookmark ✅
+7. Have a minimum image size so they fill up room and use object-fit: cover; if neccessary
+8. Logo font is questionable. Montserat may be better
+9. A short paragraph description below the list title, to get more info about the list.
+10. Fix the side scroll (the culprit is the absolute postioned scroll buttons) (** randomly disappeared, didn't change anything) ✅
 
 Today the biggest thing I did was implement a sticky header that did not just start at the top. I had to read on postioned layout. I made minor aesthetic changes. I also refactored my css files and learned about the CSS at rule @import to have different css files without the need for multiple link tags.
+
+# Day 8: 12-18-22
+Did a bit of work on the absolute positioned scroll buttons
+
+# Day 9: 12-19-22
+One click I want the button to scroll right a bit. Did it ✅
+I put the first article anchor chip style ✅
+
+1. Look into the fetch/http header options to see if I can optimize api cache. (or at least see how it works)
+2. After having bookmark checked make sure it stays checked if the key is still in localStorage ✅
+3. Give option to remove item from bookmark page ✅
+4. Localstorage has bug for different list figure this out. ✅
+
+# Day 10: 12-20-22
+Localstorage bug fixed.
+
+- Responsive design was done for larger screens.
+- Sidescroll issue on next button for bigger screens.
+
+Tommorow
+1. Add ellipsis to very long categorie names
+2. Add list description in api, and add it dynamically with js
+3. Make more lists, that will be used in real life.
+4. Add silbling as members on Sanity.io and Amazon and let them make a list or more
+5. Write CS50 essay/summary about this project
+6. Record 3min(max) video about this project. Make simple cuts so I can get all the information in, in 3 minutes.

@@ -7,11 +7,14 @@ export let DATASET = "production";
 let QUERY = encodeURIComponent('*[_type == "lists"]');
 let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
 
+// localStorage.clear()
+
 fetch(PROJECT_URL)
     .then((res) => res.json())
     // destructure result object b/c others don't matter
     .then(({ result }) => {
-        result.forEach((list, index) => {
+        console.log('fetch results', result)
+        result.reverse().forEach((list, index) => {
             const main = q('.main')
             const article = createArticle(list, index)
 
@@ -21,12 +24,13 @@ fetch(PROJECT_URL)
         })
         scrollAnchorActiveStyle()
         scrollBtnObserver()
+        scrollBtnClick()
     })
     .catch((err) => console.error(err));
 
 function createArticle(list, index) {
     const article = create('article', 'article')
-    const header = create('header', 'article__top')
+    const header = create('header', 'article--top')
     const ol = create('ol', 'article__list')
 
     article.id = `list${index + 1}`
@@ -41,6 +45,7 @@ function createArticle(list, index) {
 
     header.innerHTML = `
         <h1 class="article__h1">${list.list_name}</h1>
+        <p class="article__summary">${list.list_summary ? list.list_summary : ''}</p>
         <span class="article__date">Last updated ${t}</span>
     `;
     
@@ -67,8 +72,8 @@ function createScrollAnchor(list, index) {
 function scrollBtnObserver() {
     // Intersection Observer API
     // Scroll Bar & it's scroll buttons & functionality
-    const prev = document.querySelector('.scrollBtn__prev')
-    const next = document.querySelector('.scrollBtn__next')
+    const prev = document.querySelector('.scrollBtn--prev')
+    const next = document.querySelector('.scrollBtn--next')
     const nav = document.querySelector('nav.scrollCtr')
     // don't use q helper function for scrollAnchors
     const scrollAnchors = document.querySelectorAll('.scrollAnchor')
@@ -88,7 +93,7 @@ function scrollBtnObserver() {
     let options = {
         root: nav,
         rootMargin: '0px',
-        threshold: .5
+        threshold: 0
     }
     let observer = new IntersectionObserver(callback, options);
     observer.observe(scrollAnchors[0])
@@ -108,7 +113,8 @@ function scrollBtnObserver() {
     {
         root: nav,
         rootMargin: '0px',
-        threshold: 0
+        // disappear arrow when the whole last thing is visible
+        threshold: 1
     })
     observer2.observe(scrollAnchors[scrollAnchors.length - 1]);
 }
@@ -117,12 +123,13 @@ function scrollAnchorActiveStyle() {
     // Run the event not on each individual anchor tag but rather on the whole container that holds the anchor tags.
     const anchors = q('.scrollAnchor')
 
+    anchors[0].classList.add('scrollAnchor--active')
+
     q('.scrollCtr').addEventListener('click', (e) => {
         let target = e.target;
         // If the event.target is not an anchor tag we don't care about it.
         if (target.tagName !== 'A') return;
 
-        
         anchors.forEach(anchor => {
             // Removes homepage article, after first :target click
             function removeFirstArticle() {
@@ -134,10 +141,36 @@ function scrollAnchorActiveStyle() {
                 removeFirstArticle = noop
             }
             removeFirstArticle()
-            // This is for styles
-            anchor.classList.remove('active');
+            // Removes any active class, so a new active can be added below
+            anchor.classList.remove('scrollAnchor--active');
         })
     
-        target.classList.add('active')       
+        target.classList.add('scrollAnchor--active')
     })
 }
+function scrollBtnClick() {
+    const scrollCtr = q('.scrollCtr')
+    q('.scrollBtn--next').addEventListener('click', xScroll)
+    q('.scrollBtn--prev').addEventListener('click', xScroll)
+    function xScroll(e) {
+        if (e.target.classList.contains('scrollBtn--next')) {
+            scrollCtr.scrollLeft += scrollCtr.clientWidth
+        } else {
+            scrollCtr.scrollLeft -= scrollCtr.clientWidth
+        }
+    }                
+}
+
+function changeBookmarkButtonPosition() {
+    if(window.innerWidth > 865) {
+        const offsetRight = (window.innerWidth - 700) / 2 - 75;
+        q('.wishlist').style.right = offsetRight + 'px';
+        console.log('triggered')
+    }
+}
+let doit;
+changeBookmarkButtonPosition();
+window.addEventListener('resize', (e) => {
+    clearTimeout(doit)
+    doit = setTimeout(changeBookmarkButtonPosition, 1000)
+})

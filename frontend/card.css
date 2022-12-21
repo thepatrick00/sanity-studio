@@ -3,33 +3,35 @@
 .card {
     display: grid;
     grid-template-columns: 15% 45% 40%;
-    padding: 10px;
+    padding: 20px 10px;
     border-bottom: 1px solid hsl(0, 0%, 70%);
     gap: 5px;
     /* Due to the min-height the content childs can actually be effected. For best alignment I want them to be at the top together */
     /* min-height: 150px; */
-    align-content: start;
+    align-items: center;
     justify-items: center;
     position: relative;
     color: rgb(49, 49, 49);
+    max-width: 700px;
 }
-.card__left {
-    display: flex;
-    flex-direction: column;
-    align-self: start;
-}
+
 .card__count {
     font-size: 1.2rem;
     color: hsl(0, 0%,45%);
-    margin: auto;
-    border-top: none;
-    top: 0px;
-    left: 0px;
     letter-spacing: 2px;
+    margin: auto;
+    width: fit-content;
+    display: block;
 }
 .card__bookmark {
     /* Max-width: 100%; not working on svg so 100px is an arbitrary value that represent 100% */
     width: 70px;
+    cursor: pointer;
+}
+.card__bookmark--active {
+    fill: transparent;
+    /* not for styling but for JS in card.js
+    might want to use data-* attribute instead */
 }
 .card__middle {
     padding-left: 10px;
@@ -43,6 +45,9 @@
     white-space: nowrap;
     color: hsl(120deg 50% 40%);
     font-weight: bold;
+    /* Since this is an inline <a>, the padding does not grow at all. However what it does
+    create a larger click area for the <a> tag. */
+    padding: 20px 0 10px;
 }
 .card__img {
     height: 110px;
@@ -50,6 +55,7 @@
 
 @media (min-width: calc(550 / 16 * 1rem)) {
 /* Tablets */
+    
 }
 
 @media (min-width: calc(1100 / 16 * 1rem)) {
