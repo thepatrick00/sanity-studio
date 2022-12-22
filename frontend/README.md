@@ -1,12 +1,30 @@
 # BeGiftable.com Project
-#### Video Demo: (url will go here)
-#### TLDR: A web-app to search through curated lists, save your favorite products, and make buying decisions.
+#### Video Demo: https://youtu.be/LFatkuL_ec8
+### **TLDR: Short description of every section below:**
+Begiftable is a web-app that lets you scroll through curated lists, save your favorite products, and make buying decisions.
  
-#### Full Description: (at least several hundred words long describing things in detail)
+This project was made with HTML,CSS,JavaScript. I deliberately chose to use no frameworks or libraries because I wanted to create something awesome while improving my core JavaScript skills.
  
-- write what each file contains and does
-- write if I debated design choices
-- explain my decisions
+I used the BEM(Block__Element--Modifier) methodology for my CSS selectors.
+ 
+The software architecture I used is JAMstack. Javascript, API, Markup.
+ 
+For my JAMstack 'backend' I chose Sanity.io because of its cost to host the CMS backend(free) and the great documentation. I then installed the starter files via npm and coded the schema object, to get the right inputs for the CMS. I wrote content. Sanity.io turned my content into an API I could use.
+ 
+I have a file helper.js that improves the readability of my code and speed of development with two functions.
+ 
+The main features
+1. Sticky + Scrollable Categories Bar
+    * `position: sticky;` plus being inside the right container to stick to the top
+    * `overflow: x; display: flex;` to have elements overflow and inline axis scroll bar
+    * Inside this scroll bar where click to scroll arrows. It didn't make sense to display the right scroll arrow, when at the end of the list. To solve this I used the Intersection Observer API.
+2. Routing
+    * Routing was done with HTML and CSS only using :target pseudo-class. If the list was ":targeted" then it would display: block; to show.
+    * Bookmark.html was done as a normal link
+3. Responsive Design
+    * The website was built mobile first and is responsive so it looks good on desktop too.
+4. Bookmark Feature
+    * Each card had a bookmark icon you could click to save a product to your own "bookmark list". This feature uses the LocalStorage API.
  
 ## **Introduction**
 Hi, my name is Patrick and the final project I created for CS50 is a website, BeGiftable.com. Here you are able to search our curated lists, bookmark your favorite products, and make buying decisions based on your budget. 
@@ -82,12 +100,15 @@ To make it stick I used `position: sticky;` in CSS and put it inside a container
 ### **Side Scroll**
 The side scrolling overflow was done with display: flex; which by default puts all elements on the inline axis. This causes an overflow which is exactly what I want. Then I use `overflow-x: scroll;` to create a scroll bar horizontally.
  
-### **Click Scroll Arrow**
+### **Click to Scroll Arrow Buttons**
 Finally, I wanted to add arrows to each side of the scroll container to make it obvious that you can scroll and to also let users click to scroll in either direction. In the image the arrow is shown on the right side inside of a white circle
  
 Initially, I put the arrow, with `position: absolute;`, on the container but ran into a problem. When I started to scroll, the arrow buttons would move with the scroll bar. This was caused by the fact that these absolutely positioned arrows were inside a container with scroll context.
  
 To fix this I created a wrapper div, to wrap the scroll context container. This wrapper would not have a scroll context. I then applied `position: relative;` to the wrapper, so my absolutely positioned arrows would be contained by the wrapper. Now on scroll, my arrow buttons stayed in place like they should.
+
+#### **Intersection Observer API** 
+When there was no room to scroll to the left or to the right it did not make sense to display this arrow button. Using the Intersection Observer API, I was able to make the left scroll arrow appear after the first category button was passed and the right scroll arrow disappear when we reached the end of the list.
  
 ## **Routing**
 The next major decision was routing. I decided to go with a single page application. This is because it would let me only need to fetch the data from the api once and then it would be cached.
