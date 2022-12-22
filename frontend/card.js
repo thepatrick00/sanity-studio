@@ -22,11 +22,7 @@ function createCardLeft(index, list) {
     bookmark.tabIndex = 0
     count.textContent = `${index+1}/${list.length}`;
 
-    // For localStorage: now I can use key to access obj elsewhere
-
-    // both key and value end up being string values
-
-    // BUG!! When I add key to localStorage, check bookmark.html, initially it is correct. When I go back to index.html and try to remove the same item that was added it does not get removed. Instead the same key and value is added again.
+    // this function needs to stay inside here b/c it needs access to the scope of the values of key and value
     function handlingLocalStorage(e) {
         // preventDefault is for keypress listener space button
         e.preventDefault();
