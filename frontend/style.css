@@ -150,11 +150,10 @@ a {
 /*  */
 .wishlist {
   border-radius: 50%;
-  aspect-ratio: 1/1;
+  height: 60px;
   width: 60px;
-  background-color: hsl(0 93.3% 94.1% / .3);
-  /* background-color: hsl(0 93.3% 94.1% / .5); */
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   position: fixed;
   bottom: 20px;
   right: 15px;
@@ -240,9 +239,9 @@ nav.scrollCtr {
   opacity: 0;
   transform: translateX(-20px);
 }
+/* 2 is for next button */
 .hide2 {
   opacity: 0;
-  transform: translateX(20px);
 }
 .show {
   opacity: 1;
